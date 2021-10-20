@@ -1,4 +1,4 @@
-// https://ucb-note-taker-2021.herokuapp.com/ heroku link
+// https://ucb-note-taker-2021.herokuapp.com/ heroku link           git push heroku main
 //setting up server
 const express = require("express");
 const fs = require("fs")
@@ -14,12 +14,12 @@ app.use(express.json());
 
 //root route
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "/public/index.html"));
+    res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 //notes route
 app.get("/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "/public/notes.html"));
+    res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
 app.route("/api/notes")
@@ -28,6 +28,7 @@ app.route("/api/notes")
         res.json(database);
     })
 
+    //getting internal server error (500)
 
 
 
