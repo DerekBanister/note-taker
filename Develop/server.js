@@ -30,3 +30,6 @@ app.route("/api/notes")
 
 
     //getting internal server error (500)
+            app.listen(PORT, function () {
+                console.log("App listening on PORT " + PORT);
+            });
