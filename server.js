@@ -1,4 +1,4 @@
-
+// https://ucb-note-taker-2021.herokuapp.com/ heroku link
 //setting up server
 const express = require("express");
 const fs = require("fs")
@@ -21,6 +21,12 @@ app.get("/", function (req, res) {
 app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
+
+app.route("/api/notes")
+//grab notes list (our db)
+    .get(function (req, res) {
+        res.json(database);
+    })
 
 
 
