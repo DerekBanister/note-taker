@@ -2,7 +2,7 @@
 
 * This application allows you to take notes and save them through your web browser. It is built using html, css, and javascript as well as Node.Js, Heroku, and Express.Js. The note data is retrieved from a JSON file and is hosted using Heroku. For users that need to keep track of alot of information, and edit that information, this application is perfect for you.
 
-![Gif](/develop/images/notegif.gif)
+![Gif](Develop/images/notegif.gif)
 
 
 ## Built With
