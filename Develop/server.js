@@ -59,7 +59,7 @@ app.route("/api/notes")
         //new note 
         res.json(newNote);
     });
-    //delete note based on id
+    //delete note based on id, just noticed in testing I cannot delete test note.
     app.delete("/api/notes/:id", function (req, res) {
 
         let jsonFilePath = path.join(__dirname, "/db/db.json");
