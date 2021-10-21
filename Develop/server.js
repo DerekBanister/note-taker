@@ -2,6 +2,7 @@
 //setting up server
 const express = require("express");
 const fs = require("fs")
+//make sure you require path lol
 const path = require('path');
 const database = require("./db/db.json")
 
@@ -24,13 +25,42 @@ app.get("/notes", function (req, res) {
 });
 
 app.route("/api/notes")
-//grab notes list (our db)
+    // Grab the notes list 
     .get(function (req, res) {
         res.json(database);
     })
+    .post(function (req, res) {
+        let jsonFilePath = path.join(__dirname, "/db/db.json");
+        let newNote = req.body;
 
+        // test note is the original note.
+        let highestId = 99;
+        // loop through the array and find the highest ID.
+        for (let i = 0; i < database.length; i++) {
+            let individualNote = database[i];
 
-    //getting internal server error (500)
-            app.listen(PORT, function () {
-                console.log("App listening on PORT " + PORT);
-            });
+            if (individualNote.id > highestId) {
+                // test note always highest id
+                highestId = individualNote.id;
+            }
+        }
+        // assigns id to the newNote. 
+        newNote.id = highestId + 1;
+        // push to db
+        database.push(newNote)
+
+        fs.writeFile(jsonFilePath, JSON.stringify(database), function (err) {
+
+            if (err) {
+                return console.log(err);
+            }
+            console.log("Your note was saved!");
+        });
+        //new note 
+        res.json(newNote);
+    });
+
+ 
+app.listen(PORT, function () {
+    console.log("App listening on PORT " + PORT);
+});
